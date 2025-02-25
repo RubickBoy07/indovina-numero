@@ -1,0 +1,29 @@
+body {
+    background-color: black;
+}
+
+.title {
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+input {
+    font-size: 50px;
+    color: yellow;
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+    border: 5px solid white;
+    background-color: blueviolet;
+    border-radius: 5%;
+}
