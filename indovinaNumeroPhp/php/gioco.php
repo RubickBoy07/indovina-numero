@@ -22,14 +22,39 @@ session_start();
     ?>
 
     <form action="controller.php" method="post" class="inserimento">
-        <label for="numero" id="subtitle">
+        <!-- <label for="numero" id="subtitle">
             inserisci numero
-        </label>
-        <input type="number" id="numero" name="numero" required>
+        </label> -->
 
-        <br>
+        <?php
+        if (isset($_GET["ris"]) && $_GET["ris"] == 1) {
+            $playAgain = "<form action=\"controller.php\" method=\"post\" class=\"againForm\">
+                            <input type=\"submit\" value=\"gioca di nuovo\" name=\"again\" class=\"again\">
+                        </form>";
 
-        <input type="submit" value="Invia" name="invia" id="invia">
+            echo $playAgain;
+        } else if (isset($_GET["lose"])) {
+            if ($_GET["lose"] == 1) {
+                $playAgain = "<form action=\"controller.php\" method=\"post\" class=\"againForm\">
+                            <input type=\"submit\" value=\"gioca di nuovo\" name=\"again\" class=\"again\">
+                        </form>";
+
+                echo $playAgain;
+            }
+
+        } else {
+            echo "
+            <label for=\"numero\" id=\"subtitle\">
+                inserisci numero
+            </label>
+
+            <input type=\"number\" id=\"numero\" name=\"numero\" required>
+            
+            <br>
+
+            <input type=\"submit\" value=\"Invia\" name=\"invia\" id=\"invia\">";
+        }
+        ?>
     </form>
 
     <?php
@@ -42,12 +67,6 @@ session_start();
     if (isset($_GET["ris"])) {
         if ($_GET["ris"] == 1) {
             echo "<div class=\"phrases\"> bravo, hai indovinato! </div>";
-
-            $playAgain = "<form action=\"controller.php\" method=\"post\" class=\"againForm\">
-                            <input type=\"submit\" value=\"gioca di nuovo\" name=\"again\" class=\"again\">
-                        </form>";
-
-            echo $playAgain;
         } else if ($_GET["ris"] == 2) {
             echo "<div class=\"phrases\"> peccato, hai sbagliato, il numero inserito è troppo piccolo </div>";
         } else {
@@ -58,12 +77,6 @@ session_start();
     if (isset($_GET["lose"])) {
         if ($_GET["lose"] == 1) {
             echo "<div class=\"phrases\"> peccato, hai perso, il numero era: " . $_SESSION["rand"] . " </div>";
-
-            $playAgain = "<form action=\"controller.php\" method=\"post\" class=\"againForm\">
-                            <input type=\"submit\" value=\"gioca di nuovo\" name=\"again\" class=\"again\">
-                        </form>";
-
-            echo $playAgain;
         }
     }
     ?>

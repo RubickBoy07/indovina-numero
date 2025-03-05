@@ -8,6 +8,8 @@ if (isset($_POST["gioca"])) {
     $_SESSION["rand"] = rand(1, 100);
 
     header("location: gioco.php");
+} else {
+    header("location: home.html");
 }
 
 if (isset($_POST["invia"])) {
@@ -19,8 +21,6 @@ if (isset($_POST["invia"])) {
         header("location: gioco.php?lose=1");
         $_SESSION["tentativi"]--;
     }
-
-
 }
 
 if (isset($_POST["again"])) {
